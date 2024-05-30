@@ -20,24 +20,16 @@ export class TablaPaisesComponent {
   paises:any =[]
   paisesBackUp= [
     {
-        "nombre": "Moldova",
-        "foto": "https://flagcdn.com/w320/md.png"
+        "nombre": "Spain",
+        "foto": "https://flagcdn.com/w320/es.png"
     },
     {
-        "nombre": "United States",
-        "foto": "https://flagcdn.com/w320/us.png"
+        "nombre": "Seychelles",
+        "foto": "https://flagcdn.com/w320/sc.png"
     },
     {
-        "nombre": "Mayotte",
-        "foto": "https://flagcdn.com/w320/yt.png"
-    },
-    {
-        "nombre": "Nauru",
-        "foto": "https://flagcdn.com/w320/nr.png"
-    },
-    {
-        "nombre": "Mozambique",
-        "foto": "https://flagcdn.com/w320/mz.png"
+        "nombre": "Angola",
+        "foto": "https://flagcdn.com/w320/ao.png"
     }
 ]
   ngOnInit(): void {
