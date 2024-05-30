@@ -1,0 +1,19 @@
+ 
+
+<div  class="table-responsive">
+    <table class="table align-middle table-striped-columns ">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">bandera</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pais of paises" (click)="seleccionarPais(pais)">
+            <td>{{pais.nombre}}</td>
+            <td><img src={{pais.foto}}  style="max-width: 150px; max-height: 150px;"></td>
+          </tr>
+          
+        </tbody>
+    </table>
+</div>

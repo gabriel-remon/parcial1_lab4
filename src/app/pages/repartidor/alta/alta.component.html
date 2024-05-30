@@ -1,0 +1,11 @@
+<div class="row g-5 p-5" >
+    <div class="col-md-7 col-lg-8">
+        <h3 class="text-center">Alta de Repartidor</h3>
+        <app-form-repartidor [pais]="paisSelec"></app-form-repartidor>
+    </div>
+    
+    <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="text-center">Listado de paises</h4>
+        <app-tabla-paises (paisElegido)="pais($event)"></app-tabla-paises>
+    </div>
+</div>

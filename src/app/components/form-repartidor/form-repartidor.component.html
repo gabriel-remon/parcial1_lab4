@@ -1,0 +1,57 @@
+<form class="needs-validation" (submit)="submit()" [formGroup]="this.form">
+    <div class="row g-3">
+        <div class="col-12">
+            <label for="nombre" class="form-label">Nombre </label>
+            <input type="text" class="form-control" id="nombre" [formControl]="form.controls.nombre">
+            <div class="text-danger" *ngIf="form.get('nombre')?.touched">
+                <label *ngIf="form.controls.nombre.getError('required')">nombre requerido</label>
+                <label *ngIf="form.controls.nombre.getError('invalidString')">Solo puede ingresar letras</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <label for="pais" class="form-label">Pais </label>
+            <input type="text" class="form-control" id="pais" [value]="pais?.nombre" readonly [formControl]="form.controls.pais" >
+            <div class="text-danger" *ngIf="form.get('pais')?.touched">
+                <label *ngIf="form.controls.pais.getError('required')">pais requerido</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <label for="fecha" class="form-label">Fecha de nacimiento</label>
+            <input type="date" class="form-control" id="fecha"  [formControl]="form.controls.nacimiento">
+            <div class="text-danger" *ngIf="form.get('nacimiento')?.touched">
+                <label *ngIf="form.controls.nacimiento.getError('required')">fecha de nacimiento requerida</label>
+                <label *ngIf="form.controls.nacimiento.getError('minAge')">Debe ser mayor de 18 años para registrarse </label>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="dni" class="form-label">DNI</label>
+            <input type="text" class="form-control" id="dni" [formControl]="form.controls.dni" >
+            <div class="text-danger" *ngIf="form.get('dni')?.touched">
+                <label *ngIf="form.controls.dni.getError('required')">Ingrese su DNI </label>
+                <label *ngIf="form.controls.dni.getError('minlength')">El DNI debe tener mas de 6 caracteres</label>
+                <label *ngIf="form.controls.dni.getError('maxlength')">El DNI debe tener menos de 11 caracteres</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="helados" class="form-label">Cantidad de helados que puede cargar</label>
+            <input type="number" class="form-control" id="helados" [formControl]="form.controls.cantidad_helados" >
+            <div class="text-danger" *ngIf="form.get('cantidad_helados')?.touched">
+                <label *ngIf="form.controls.cantidad_helados.getError('required')">Ingrese la cantidad de helados que puede llevar </label>
+                <label *ngIf="form.controls.cantidad_helados.getError('min')">ingrese por lo menos 1 </label>
+                <label *ngIf="form.controls.cantidad_helados.getError('max')">No puede ingresar mas de 50 </label>
+            </div>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="same-address" [formControl]="form.controls.unidad_propia">
+            <label class="form-check-label" for="same-address">Estado de la unidad propia</label>
+        </div>
+
+
+    </div>
+    <hr class="my-4">
+    <button class="w-100 btn btn-primary btn-lg" type="" [disabled]="!form.valid"  [textContent]="tipoForm" ></button>
+</form>

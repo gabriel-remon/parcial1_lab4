@@ -23,10 +23,9 @@ export class HeaderComponent {
   }
 
   logout(){
+    this.utlSvc.goto("")
     this.authSvc.logout()
   }
-  goto(path: string) {
-    this.goto(path)
-  }
+ 
 
 }

@@ -1,0 +1,14 @@
+thead {
+    position: sticky; /* Fijar encabezado */
+    top: 0; /* Posición superior del encabezado */
+    background-color: #f8f9fa; /* Color de fondo del encabezado */
+  }
+
+  .table-responsive {
+    max-height: 500px; /* Altura máxima de la tabla */
+    overflow-y: auto; /* Activar scroll vertical */
+  }
+
+  .table-responsive::-webkit-scrollbar{
+    display: none;
+}

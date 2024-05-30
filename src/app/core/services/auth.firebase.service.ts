@@ -19,7 +19,6 @@ export class AuthFirebaseService {
   dbFirebase =inject( Firestore)
   rol!:"empleado"|"admin"; 
   private bdUsuarios = "usuarios"
-  private bdLogin = "login"
   private userSubject = new Subject<any>(); // Subject to store the user state
   user$: Observable<any>;
 
@@ -57,18 +56,7 @@ export class AuthFirebaseService {
     })
   }
 
-  //graba caga inicio de secion en la base de datos login
-  addNewLogin(uid: string) {
-    const data = {
-      idUsuario: uid,
-      hora: new Date()
-    }
-    addDoc(collection(getFirestore(), this.bdLogin), data).then(res => {
-      console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
-  }
+
 
 
   //inicia secion
@@ -78,8 +66,6 @@ export class AuthFirebaseService {
       this.userLogin = true;
       this.user = res.user
       this.userSubject.next(res.user);
-      this.addNewLogin(res.user.uid)
-
       const mensajeRef = collection(this.dbFirebase,this.bdUsuarios)
       const q = query(mensajeRef,where("_id",'==',this.user.uid))
       onSnapshot(q,(snapshot:QuerySnapshot)=>{
