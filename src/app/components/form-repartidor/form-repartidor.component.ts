@@ -16,7 +16,6 @@ import { edadValidator } from '../../core/validators/edad.validator';
   styleUrl: './form-repartidor.component.css'
 })
 export class FormRepartidorComponent {
-  @Input() repartidor!:Repartidor;
   @Input() pais:any;
   @Output() tareaRealizada = new EventEmitter<any>();
 
@@ -27,20 +26,6 @@ export class FormRepartidorComponent {
   imagen :any;
 
   ngOnInit():void{
-    if(this.repartidor){
-      this.tipoForm = "Modificar repartidor"
-      this.pais = this.repartidor.pais_origen as string
-      this.form.patchValue({
-        nombre: this.repartidor.nombre,
-        pais: this.repartidor.pais_origen,
-        nacimiento: this.repartidor.fecha_nacimiento,
-        unidad_propia: this.repartidor.unidadPropia?"true":null,
-        cantidad_helados: this.repartidor.capacidad_helados.toString(),
-        dni: this.repartidor.dni
-        //imagen:this.pelicula.src_foto
-      });
-      
-    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -72,12 +57,7 @@ export class FormRepartidorComponent {
       url_foto_pais:this.pais.foto
     }
 
-    if(this.repartidor){
-      nuevoActor.id = this.repartidor.id
-      this.repartidorSvc.updateData(nuevoActor as Repartidor).then(()=>{
-        this.tareaRealizada.emit()
-      }).finally(()=>this.spinerSvc.hide())
-    }else{
+   
       this.repartidorSvc.newData(nuevoActor as Repartidor).then((data)=>{
         if(data.estado){
           this.toasSvc.success(data.mensaje)
@@ -87,7 +67,7 @@ export class FormRepartidorComponent {
         this.tareaRealizada.emit()
       }
     ).finally(()=>this.spinerSvc.hide())
-    }
+    
 
     this.form.reset()
   }
