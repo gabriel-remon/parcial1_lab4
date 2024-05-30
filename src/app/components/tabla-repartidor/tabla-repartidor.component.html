@@ -9,15 +9,17 @@
             <th scope="col" *ngIf="!tablaMin">Fecha de nacimiento</th>
             <th scope="col" *ngIf="!tablaMin">capacidad Transporte</th>
             <th scope="col" *ngIf="!tablaMin">pais origen</th>
+            <th scope="col" *ngIf="!tablaMin">Unidad propia</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let repartidor of repartidores" id={{repartidor?.id}} (click)="seleccionarRepartidor(repartidor)">
             <td>{{repartidor?.nombre}}</td>
-            <td  *ngIf="!tablaMin">{{repartidor?.dni}} personas</td>
+            <td  *ngIf="!tablaMin">{{repartidor?.dni}} </td>
             <td  *ngIf="!tablaMin">{{repartidor?.fecha_nacimiento}}</td>
-            <td  *ngIf="!tablaMin">{{repartidor?.capacidad_pizzas}}</td>
+            <td  *ngIf="!tablaMin">{{repartidor?.capacidad_helados}} helados</td>
             <td  *ngIf="!tablaMin">{{repartidor?.pais_origen}}</td>
+            <td  *ngIf="!tablaMin">{{repartidor?.unidadPropia}}</td>
           </tr>
           
         </tbody>

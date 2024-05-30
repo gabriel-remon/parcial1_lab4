@@ -11,6 +11,8 @@
                                 Bienvenido</a></li>
                 <li class="nav-item " *ngIf="user"><a (click)="utlSvc.goto('repartidor/alta')" class="text-white nav-link">
                                 Alta repartidor</a></li>
+                <li class="nav-item " *ngIf="user"><a (click)="utlSvc.goto('repartidor/listado')" class="text-white nav-link">
+                                Listado repartidor</a></li>
 
                 <li class="nav-item me-3" *ngIf="!user"><a (click)="utlSvc.goto('auth/login')"
                                 class="text-white nav-link active " aria-current="page">login</a></li>

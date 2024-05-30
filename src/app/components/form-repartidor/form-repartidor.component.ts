@@ -34,6 +34,9 @@ export class FormRepartidorComponent {
         nombre: this.repartidor.nombre,
         pais: this.repartidor.pais_origen,
         nacimiento: this.repartidor.fecha_nacimiento,
+        unidad_propia: this.repartidor.unidadPropia?"true":null,
+        cantidad_helados: this.repartidor.capacidad_helados.toString(),
+        dni: this.repartidor.dni
         //imagen:this.pelicula.src_foto
       });
       

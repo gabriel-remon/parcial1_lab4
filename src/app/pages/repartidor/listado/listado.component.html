@@ -1,0 +1,28 @@
+<div class="container py-4">
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <app-tabla-repartidor (peliculaElegida)="repartidorSeleccionado($event)"></app-tabla-repartidor>
+      </div>
+    </div>
+    
+    <div class="p-5 mb-4 bg-light rounded-3" *ngIf="!repartidorSelc">
+      <div class="container-fluid py-5">
+        <h1 class="text-center " >Seleccione un repartidos de la lista para ver sus detalles </h1>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch" *ngIf="repartidorSelc">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+            <app-detalle-repartidor [repartidor]="repartidorSelc"></app-detalle-repartidor>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+            <app-detalle-pais [pais]="paisRepartidor"></app-detalle-pais>
+        </div>
+      </div>
+    </div>
+
+  </div>

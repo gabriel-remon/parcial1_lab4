@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PeliculasService } from '../../core/services/peliculas.service';
 import { Repartidor } from '../../core/models/repartidor.model';
 import { RepartidorServices } from '../../core/services/repartidor.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-tabla-repartidor',
@@ -19,13 +19,15 @@ export class TablaRepartidorComponent {
   @Input()repartidores! : Repartidor[] |[];
 
   repartidorSvc = inject(RepartidorServices)
-
+  spinerSvc = inject(NgxSpinnerService)
  
   ngOnInit(): void {
+    this.spinerSvc.show()
     if(!this.repartidores){
       this.repartidorSvc.getData(repartidores =>{
+       
         this.repartidores = repartidores
-      })
+      },()=>this.spinerSvc.hide())
     }}
 
     seleccionarRepartidor(repartidor:Repartidor){
