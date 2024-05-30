@@ -1,0 +1,17 @@
+<section class="py-5 text-center container">
+        <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                        <img class="d-block mx-auto mb-4 rounded" [src]="data?.foto" alt="" width="80" height="80">
+                        <h1 class="fw-light">{{data?.nombre}}</h1>
+                        <p class="lead text-body-secondary">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                Impedit, voluptates necessitatibus facilis consectetur iusto dolore. Nemo adipisci
+                                commodi totam dolore quos tenetur nulla cupiditate, animi a facere, sapiente laboriosam
+                                aspernatur.</p>
+                        <p>cantidad de repositorios: {{data?.repositorios}}</p>
+                        <p>
+                                <a [attr.href]="urlGit" class="btn btn-primary my-2">Repocitorio
+                                        GitHub</a>
+                        </p>
+                </div>
+        </div>
+</section>

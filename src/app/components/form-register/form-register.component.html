@@ -1,0 +1,34 @@
+<div class="form-signin m-auto formLogin">
+    <form (submit)="submit()" [formGroup]="this.form" >
+        <h1 class="h3 mb-3 fw-normal text-center">Registro</h1>
+        <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [formControl]="form.controls.email">
+            <label for="floatingInput">Dirección de correo electrónico</label>
+            <div class="text-danger" *ngIf="form.get('email')?.touched">
+                <label *ngIf="form.controls.email.getError('required')">email requerido</label>
+                <label *ngIf="form.controls.email.getError('email')">email invalido</label>
+            </div>
+        </div>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="nombre" placeholder="nombre" [formControl]="form.controls.nombre">
+            <label for="nombre">Nombe</label>
+            <div class="text-danger" *ngIf="form.get('nombre')?.touched">
+                <label *ngIf="form.controls.nombre.getError('required')">nombre requerido</label>
+            </div>
+        </div>
+
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [formControl]="form.controls.password">
+            <label for="floatingPassword">Contraseña</label>
+            <div class="text-danger" *ngIf="form.get('password')?.touched">
+                <label *ngIf="form.controls.password.getError('required')">contraseña requerida</label>
+                <label *ngIf="form.controls.password.getError('minlength')">la contraseña debe tener minimo 5 letras</label>
+            </div>
+        </div>
+       
+        <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="!form.valid">Registrarse</button>
+        <p class="mt-5 mb-3 text-body-secondary">Ya esta registrado? <strong (click)="utilSvc.goto(pathRegistro)"> ingrese aqui</strong></p>
+    </form>
+</div>
+   
