@@ -15,10 +15,12 @@ export class HeaderComponent {
   utlSvc = inject(UtilsService)
   authSvc = inject(AuthFirebaseService)
   user:any;
+  rol:any
 
   ngOnInit(): void {
     this.authSvc.user$.subscribe(user=>{
       this.user=user
+      this.rol = this.authSvc.rol
     })
   }
 

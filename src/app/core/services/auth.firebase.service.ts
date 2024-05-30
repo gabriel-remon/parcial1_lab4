@@ -57,19 +57,18 @@ export class AuthFirebaseService {
   }
 
 
-
-
   //inicia secion
   async login(email: string, password: string, calback?: () => void) {
     
     await signInWithEmailAndPassword(this.auth, email!, password!).then(res => {
       this.userLogin = true;
       this.user = res.user
-      this.userSubject.next(res.user);
+      
       const mensajeRef = collection(this.dbFirebase,this.bdUsuarios)
       const q = query(mensajeRef,where("_id",'==',this.user.uid))
       onSnapshot(q,(snapshot:QuerySnapshot)=>{
           this.rol = snapshot.docs[0].data()['rol']
+          this.userSubject.next(res.user);
         }
       )
 

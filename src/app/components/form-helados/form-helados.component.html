@@ -1,0 +1,46 @@
+<form class="needs-validation" (submit)="submit()" [formGroup]="this.form">
+    <div class="row g-3">
+        <div class="col-12">
+            <label for="sabor" class="form-label">Nombre </label>
+            <input type="text" class="form-control" id="sabor" [formControl]="form.controls.sabor">
+            <div class="text-danger" *ngIf="form.get('sabor')?.touched">
+                <label *ngIf="form.controls.sabor.getError('required')">sabor requerido</label>
+                <label *ngIf="form.controls.sabor.getError('invalidString')">Solo puede ingresar letras</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <label for="tipo" class="form-label">Ingredientes</label>
+            <select class="form-select" id="tipo"  [formControl]="form.controls.tipo">
+                <option  value="" selected>Seleccione uno</option>
+                <option>crema</option>
+                <option>agua</option>
+            </select>
+            <div class="text-danger" *ngIf="form.get('tipo')?.touched">
+                <label *ngIf="form.controls.tipo.getError('required')">Ingrese los ingredientes de la helado</label>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="precio" [formControl]="form.controls.precio" >
+            <div class="text-danger" *ngIf="form.get('precio')?.touched">
+                <label *ngIf="form.controls.precio.getError('required')">ingrese el precio de la helado en $</label>
+                <label *ngIf="form.controls.precio.getError('min')">El precio del helado debe ser mayor a 0</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="peso" class="form-label">Peso</label>
+            <input type="number" class="form-control" id="peso" [formControl]="form.controls.peso" >
+            <div class="text-danger" *ngIf="form.get('peso')?.touched">
+                <label *ngIf="form.controls.peso.getError('required')">Ingrese el peso de la helado </label>
+                <label *ngIf="form.controls.peso.getError('min')">debe pesar entre 250 y 1000 grm</label>
+                <label *ngIf="form.controls.peso.getError('max')">debe pesar entre 250 y 1000 grm</label>
+            </div>
+        </div>
+
+
+    </div>
+    <hr class="my-4">
+    <button class="w-100 btn btn-primary btn-lg" type="" [disabled]="!form.valid"  [textContent]="tipoForm" ></button>
+</form>

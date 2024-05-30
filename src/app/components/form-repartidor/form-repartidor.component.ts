@@ -75,9 +75,8 @@ export class FormRepartidorComponent {
     if(this.repartidor){
       nuevoActor.id = this.repartidor.id
       this.repartidorSvc.updateData(nuevoActor as Repartidor).then(()=>{
-        this.spinerSvc.hide()
         this.tareaRealizada.emit()
-      })
+      }).finally(()=>this.spinerSvc.hide())
     }else{
       this.repartidorSvc.newData(nuevoActor as Repartidor).then((data)=>{
         if(data.estado){
@@ -85,10 +84,9 @@ export class FormRepartidorComponent {
         }else{
           this.toasSvc.error(data.mensaje)
         }
-        this.spinerSvc.hide()
         this.tareaRealizada.emit()
       }
-    )
+    ).finally(()=>this.spinerSvc.hide())
     }
 
     this.form.reset()
